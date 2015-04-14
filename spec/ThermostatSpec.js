@@ -43,6 +43,11 @@ describe('Thermostat', function() {
       expect(thermostat.powerSave).toEqual(true);
     });
 
+    it('that can be turned off', function() {
+      thermostat.powerSaveSwitch
+      expect(thermostat.powerSave).toEqual(false);
+    });
+
   });
 
   });
