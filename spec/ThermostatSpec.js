@@ -22,12 +22,24 @@ describe('Thermostat', function() {
     });
 
     it('with a minimum value of 10', function() {
-      var i;
-      for (i = 0; i < 10; i++) {
-        thermostat.decreaseTemp();
-      }
+      thermostat.temperature = 10;
+
       expect(function() { thermostat.decreaseTemp() }).toThrow(new Error('Sorry, cannot go lower than 10'))
     });
+
+    it('with a maximum value of 32', function() {
+      thermostat.temperature = 32;
+
+      expect(function() { thermostat.increaseTemp()}).toThrow(new Error('Sorry, cannot go higher than 32'))
+    });
+
+  // describe('it has a power saving mode', function() {
+
+  //   it('', function() {
+
+  //   });
+
+  // });
 
   });
 

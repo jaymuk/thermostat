@@ -7,5 +7,9 @@ Thermostat.prototype.increaseTemp = function() {
 };
 
 Thermostat.prototype.decreaseTemp = function() {
+  if(this.temperature === 10) {
+    throw new Error('Sorry, cannot go lower than 10');
+  };
+
   this.temperature --;
 };
