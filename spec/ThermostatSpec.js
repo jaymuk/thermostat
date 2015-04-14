@@ -21,6 +21,14 @@ describe('Thermostat', function() {
       expect(thermostat.temperature).toEqual(19);
     });
 
+    it('with a minimum value of 10', function() {
+      var i;
+      for (i = 0; i < 10; i++) {
+        thermostat.decreaseTemp();
+      }
+      expect(function() { thermostat.decreaseTemp() }).toThrow(new Error('Sorry, cannot go lower than 10'))
+    });
+
   });
 
 });
