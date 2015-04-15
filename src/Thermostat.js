@@ -1,9 +1,13 @@
 var Thermostat = function() {
   this.temperature = 20;
   this.powerSave = true;
+  this.displayColour();
 };
 
 Thermostat.prototype.increaseTemp = function() {
+  if(this.powerSave === true && this.temperature === 25){
+    throw new Error('Power save on. Cannot go higher than 25');
+  }
   if(this.temperature === 32){
     throw new Error('Sorry, cannot go higher than 32');
   }
@@ -24,6 +28,19 @@ Thermostat.prototype.powerSaveSwitch = function() {
     this.powerSave = true;
   } else {
   this.powerSave = false;
-}
+  }
+};
 
+Thermostat.prototype.reset = function() {
+  this.temperature = 20;
+};
+
+Thermostat.prototype.displayColour = function() {
+  if (this.temperature < 18) {
+    return 'green';
+  } else if (this.temperature > 25) {
+    return 'red';
+  } else {
+    return 'yellow';
+  }
 };

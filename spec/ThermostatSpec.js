@@ -5,6 +5,7 @@ describe('Thermostat', function() {
     thermostat = new Thermostat();
   });
 
+
   describe('has a temperature', function() {
 
     it('that starts at 20 degrees', function () {
@@ -38,6 +39,7 @@ describe('Thermostat', function() {
     });
   });
 
+
   describe('has a power saving mode', function() {
 
     it('that is on by default', function() {
@@ -63,8 +65,34 @@ describe('Thermostat', function() {
         thermostat.increaseTemp();
       }).toThrow(new Error('Power save on. Cannot go higher than 25'));
     });
-
   });
 
+
+  describe('has a reset button', function() {
+
+    it('which sets the temperature to 20', function(){
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(20);
+    });
+  });
+
+  describe('has a display', function() {
+
+    it('which is green when temp is below 18', function() {
+      thermostat.temperature = 13;
+      expect(thermostat.displayColour()).toEqual('green');
+    });
+
+    it('which is yellow when temp is below 25', function() {
+      thermostat.temperature = 20;
+      expect(thermostat.displayColour()).toEqual('yellow');
+    });
+  
+    it('which is red when temp is above 25', function() {
+      thermostat.temperature = 30;
+      expect(thermostat.displayColour()).toEqual('red');
+    });
+
+  });
 
 });
