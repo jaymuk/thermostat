@@ -10,7 +10,7 @@ describe('ThermostatView', function() {
   });
 
   it('displays default temperature when loaded', function() {
-    expect('#temperature').toHaveText('20');
+    expect($('#temperature')).toHaveText('20');
   });
 
   it('increases temp by one when up button is clicked', function() {
@@ -36,11 +36,19 @@ describe('ThermostatView', function() {
     expect(getCssProperty('#temperature', 'color')).toEqual('rgb(255, 255, 0)');
   });
 
-  it('displays temp in yellow when temp is below 18', function() {
+  it('displays temp in green when temp is below 18', function() {
     for (i = 0; i < 3 ; i++) {
       $('#down').click();
     }
     expect(getCssProperty('#temperature', 'color')).toEqual('rgb(0, 255, 0)');
+  });
+
+  it('displays temp in red when temp is above 25', function() {
+    $('#powersave').click();
+    for (i = 0; i < 6 ; i++) {
+      $('#up').click();
+    }
+    expect(getCssProperty('#temperature', 'color')).toEqual('rgb(255, 0, 0)');
   });
 
   it('has max temp of 25 in powersave mode', function() {
@@ -52,11 +60,21 @@ describe('ThermostatView', function() {
   });
 
   it('has max temp of 32 when not in powersave mode', function() {
-    $('#powersave').prop("checked", false);
-    for(i = 0; i < 13; i++){
+    $('#powersave').click();
+    for(i = 0; i < 40; i++){
       $('#up').click();
     }
-    expect('#errorContainer').toContainText('Error: Sorry, cannot go higher than 32');
+    expect('#errorContainer').toContainText('32');
+  });
+
+  it('can change powersave back to on', function() {
+    $('#powersave').click();
+    $('#up').click();
+    $('#powersave').click();
+    for(i = 0; i < 5; i++){
+      $('#up').click();
+    }
+    expect('#errorContainer').toContainText('25');
   });
 
 });

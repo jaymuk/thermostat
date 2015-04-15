@@ -38,6 +38,12 @@ $(document).ready(function() {
   $('#up').click(function() {
     errorListener(thermostat,thermostat.increaseTemp);
     showTemp();
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('POST', '/temperature_change', true);
+    // xhr.send('temp=25');
+    $.post('temperature_change', "temp=" + thermostat.temperature, function(msg) {
+      $("#main-title").text(msg);
+    });
   });
 
   $('#down').click(function() {
@@ -51,7 +57,8 @@ $(document).ready(function() {
   });
 
   $('#powersave').click(function() {
-
+    if ($('#powersave').prop('checked') === true) thermostat.powerSave = true;
+    if ($('#powersave').prop('checked') === false) thermostat.powerSave = false;
   });
 
 });
