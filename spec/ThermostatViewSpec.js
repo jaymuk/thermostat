@@ -33,14 +33,14 @@ describe('ThermostatView', function() {
 
   it('displays temp in yellow when temp is between 18 and 25', function() {
     // var tempColor = $('#temperature').css('color');
-    expect(getCssProperty('#temperature', 'color')).toEqual('rgb(255, 255, 0)');
+    expect(getCssProperty('#temperature', 'color')).toEqual('rgb(255, 200, 0)');
   });
 
   it('displays temp in green when temp is below 18', function() {
     for (i = 0; i < 3 ; i++) {
       $('#down').click();
     }
-    expect(getCssProperty('#temperature', 'color')).toEqual('rgb(0, 255, 0)');
+    expect(getCssProperty('#temperature', 'color')).toEqual('rgb(0, 255, 50)');
   });
 
   it('displays temp in red when temp is above 25', function() {

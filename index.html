@@ -1,20 +1,26 @@
 <html>
   <body>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/style.css">
+    <h1>Thermostat</h1>
+    <section id='thermostat'>
+      <section id='temperature'>
+        <p>Temperature here</p>
+      </section>
+      <section id='errorContainer'></section>
+      <section style='display: inline-block'>
+          <button id='up'>up</button><br>
+          <button id='down'>down</button><br>
+          <button id='reset'>RESET</button>
+      </section>
+      <input id='powersave' type='checkbox' style='display: inline' checked>
+    </section>
+    
+    <section id='heating'>No need to turn on heating!</section>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src='src/Thermostat.js'></script>
     <script src='src/ThermostatView.js'></script>
-
-    <h1 id="main-title">Thermostat</h1>
-    <section id='temperature'>
-      <p>Temperature here</p>
-    </section>
-    <section id='errorContainer'></section>
-    <section style='display: inline-block'>
-        <button id='up'>up</button><br>
-        <button id='down'>down</button><br>
-        <button id='reset'>RESET</button>
-    </section>
-    <input id='powersave' type='checkbox' style='display: inline' checked>
-
   </body>
 </html>

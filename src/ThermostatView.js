@@ -8,11 +8,11 @@ $(document).ready(function() {
 
   var colour = function() {
     if (thermostat.temperature < 18) {
-    $('#temperature').css('color', 'rgb(0,255,0)');
+    $('#temperature').css('color', 'rgb(0,255,50)');
   } else if (thermostat.temperature > 25) {
     $('#temperature').css('color', 'rgb(255,0,0)');
   } else {
-    $('#temperature').css('color', 'rgb(255, 255, 0)');
+    $('#temperature').css('color', 'rgb(255, 200, 0)');
   }
   };
 
@@ -27,33 +27,31 @@ $(document).ready(function() {
     }
   };
 
+  var thermostatMessage = function() {
+    $.post('temperature_change', 'temp=' + thermostat.temperature, function(msg) {
+      $("#heating").text(msg);
+    });
+  };
 
-
-  // var powerSave = function() {
-  //   $('#powersave').
-  // }; 
 
   showTemp();
 
   $('#up').click(function() {
     errorListener(thermostat,thermostat.increaseTemp);
     showTemp();
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('POST', '/temperature_change', true);
-    // xhr.send('temp=25');
-    $.post('temperature_change', "temp=" + thermostat.temperature, function(msg) {
-      $("#main-title").text(msg);
-    });
+    thermostatMessage();
   });
 
   $('#down').click(function() {
     errorListener(thermostat, thermostat.decreaseTemp);
     showTemp();
+    thermostatMessage();
   });
 
   $('#reset').click(function() {
     thermostat.reset();
     showTemp();
+    thermostatMessage();
   });
 
   $('#powersave').click(function() {

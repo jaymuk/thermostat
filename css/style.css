@@ -1,0 +1,73 @@
+* {
+  text-align: center;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: EB9E46;
+}
+
+#thermostat {
+  background-color: green;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 6em;
+  margin: 0;
+}
+
+button {
+  font-size: 2em;
+  margin: .5em .5em;
+  background-color: #3498db;
+  border-radius: 4px;
+  border-width: 0;
+  color: white;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.grid {
+  border: solid;
+  border-color: #95a5a6;
+  border-width: .2em;
+  border-radius: 2em;
+  width: 20%;
+  min-width: 18em;
+  margin: 0 auto;
+  padding-bottom: 4em;
+}
+
+label {
+  font-size: 1.8em;
+}
+
+.display {
+  background-color: #bdc3c7;
+  border: solid;
+  border-color: #95a5a6;
+  border-width: 0.3em;
+  border-radius: 1em;
+  width: 90%;
+  margin: auto;
+  margin-top: 4em;
+  margin-bottom: 1em;
+}
+
+.low-usage {
+  color: #27ae60;
+}
+
+.medium-usage {
+  color: #f1c40f;
+}
+
+.high-usage {
+  color: #c0392b;
+}
